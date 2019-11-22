@@ -6,6 +6,14 @@ import kotlinx.serialization.json.*
 
 import krangl.*
 
+import java.util.concurrent.TimeUnit
+import java.io.IOException
+
+import java.io.StringWriter
+import java.io.File
+import java.io.FileWriter
+import java.io.BufferedWriter
+
 fun fibonacci(n: Int): Int {
     if (n == 1 || n == 2) {
         return 1
@@ -42,6 +50,25 @@ fun loadTodoData() {
     }
 }
 
+fun String.runCommand(): String? {
+    try {
+        val parts = this.split("\\s".toRegex())
+
+        val proc = ProcessBuilder(*parts.toTypedArray())
+                .redirectOutput(ProcessBuilder.Redirect.PIPE)
+                .redirectError(ProcessBuilder.Redirect.PIPE)
+                .start()
+
+        proc.waitFor(60, TimeUnit.MINUTES)
+
+        return proc.inputStream.bufferedReader().readText()
+    } catch(e: IOException) {
+        e.printStackTrace()
+
+        return null
+    }
+}
+
 fun testDataframes() {
     val df: DataFrame = dataFrameOf("col1", "col2") (
         1, 2,
@@ -49,7 +76,17 @@ fun testDataframes() {
         5, 6
     )
 
-    println(df)
+    val result = "python read_hdf.py testout.hdf5".runCommand()
+
+    val df2 = DataFrame.Companion.fromJsonString(result!!)
+
+    val sw = StringWriter()
+
+    val outfile = File("testout.csv")
+
+    df2.writeCSV(outfile)
+
+    print(sw.toString())
 }
 
 fun main(args: Array<String>) {
