@@ -14,6 +14,8 @@ import java.io.File
 import java.io.FileWriter
 import java.io.BufferedWriter
 
+import java.util.Scanner
+
 fun fibonacci(n: Int): Int {
     if (n == 1 || n == 2) {
         return 1
