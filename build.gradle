@@ -38,6 +38,8 @@ dependencies {
     compile "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0"
 
     compile 'de.mpicbg.scicomp:krangl:0.11'
+
+    // compile 'com.beust:klaxon:4.0.2'
 }
 
 application {

@@ -16,6 +16,9 @@ import java.io.BufferedWriter
 
 import java.util.Scanner
 
+import java.io.StringReader
+
+
 fun fibonacci(n: Int): Int {
     if (n == 1 || n == 2) {
         return 1
@@ -91,8 +94,20 @@ fun testDataframes() {
     print(sw.toString())
 }
 
+// val pm = object : PathMatcher {
+//     override fun pathMatches(path: String) = Pattern.matches(".*name.*", path)
+
+//     override fun onMatch(path: String, value: Any) {
+//         println("Adding path: $path = $value")
+//     }
+// }
+
 fun main(args: Array<String>) {
     // loadTodoData()
 
-    testDataframes()
+    // testDataframes()
+
+    // testLoadingJson()
+
+    Trial2().myTrial()
 }
