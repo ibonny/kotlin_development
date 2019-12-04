@@ -109,5 +109,7 @@ fun main(args: Array<String>) {
 
     // testLoadingJson()
 
-    Trial2().myTrial()
+    // Trial2().myTrial()
+
+    testout_fun()
 }
