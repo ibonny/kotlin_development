@@ -111,5 +111,13 @@ fun main(args: Array<String>) {
 
     // Trial2().myTrial()
 
-    testout_fun()
+    // testout_fun()
+
+    // checkerboard_entrypoint()
+
+    // AutoKey().process(args)
+
+    // PlayFair().process(args)
+
+    ADFGVX().process(args)
 }
